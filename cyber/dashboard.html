@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Cybersecurity Analyzer</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1428;
+      color: #eaf1ff;
+    }
+    header {
+      height: 72px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #263957;
+      background: #101d35;
+    }
+    .brand { font-size: 18px; font-weight: bold; }
+    .brand span { color: #56a0ff; }
+    .logout {
+      color: #d5e2f7;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    main {
+      width: min(1100px, 90%);
+      margin: 55px auto;
+    }
+    .welcome { margin-bottom: 35px; }
+    .welcome h1 { font-size: 30px; margin-bottom: 10px; }
+    .welcome p { color: #9aacc8; line-height: 1.6; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .stat, .panel {
+      background: #14233d;
+      border: 1px solid #263b5e;
+      border-radius: 16px;
+      padding: 23px;
+    }
+    .stat p { color: #9aacc8; margin: 0 0 12px; }
+    .stat h2 { margin: 0; font-size: 27px; }
+    .panel h2 { margin-top: 0; }
+    .panel p { color: #9aacc8; line-height: 1.7; }
+    .action {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 20px;
+      border-radius: 10px;
+      background: #2878e8;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .action:hover { background: #398cf5; }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #7085a5;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">🛡️ Cybersecurity <span>Analyzer</span></div>
+    <a class="logout" href="/cyber/login.html">Keluar</a>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h1>Dashboard</h1>
+      <p>
+        Selamat datang di Cybersecurity Analyzer.
+        Kelola dan analisis keamanan aplikasi Android melalui satu tempat.
+      </p>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <p>Total APK Dianalisis</p>
+        <h2>0</h2>
+      </div>
+      <div class="stat">
+        <p>Risiko Tinggi</p>
+        <h2>0</h2>
+      </div>
+      <div class="stat">
+        <p>Laporan Tersimpan</p>
+        <h2>0</h2>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Android Application Analyzer</h2>
+      <p>
+        Unggah file APK Android untuk memulai pemeriksaan
+        permission, identifikasi potensi risiko, dan analisis keamanan.
+      </p>
+      <a class="action" href="/cyber/analyzer.html">Mulai Analisis APK →</a>
+    </section>
+  </main>
+
+  <footer>© 2026 Cybersecurity Analyzer · Naila</footer>
+</body>
+</html>
