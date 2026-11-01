@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APK Analyzer | Cybersecurity Analyzer</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1428;
+      color: #eaf1ff;
+    }
+    header {
+      padding: 20px 6%;
+      background: #101d35;
+      border-bottom: 1px solid #263957;
+    }
+    header a {
+      color: #9aacc8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    main {
+      width: min(850px, 90%);
+      margin: 55px auto;
+    }
+    h1 { font-size: 29px; }
+    .description {
+      color: #9aacc8;
+      line-height: 1.7;
+    }
+    .panel {
+      margin-top: 30px;
+      padding: 30px;
+      background: #14233d;
+      border: 1px solid #263b5e;
+      border-radius: 18px;
+    }
+    .upload-area {
+      margin-top: 20px;
+      padding: 45px 20px;
+      text-align: center;
+      border: 2px dashed #42618e;
+      border-radius: 14px;
+      background: #0e1b32;
+    }
+    .upload-icon { font-size: 45px; }
+    .upload-area p {
+      color: #9aacc8;
+      line-height: 1.6;
+    }
+    input[type="file"] {
+      display: block;
+      width: 100%;
+      margin: 22px 0;
+      color: #cbd8ec;
+    }
+    button {
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 10px;
+      background: #2878e8;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #398cf5; }
+    button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+    .notice {
+      margin-top: 22px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #1b3152;
+      color: #b9cbe7;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    #fileName {
+      color: #70b4ff;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/cyber/dashboard.html">← Kembali ke Dashboard</a>
+  </header>
+
+  <main>
+    <h1>Android APK Analyzer</h1>
+    <p class="description">
+      Unggah aplikasi Android berformat APK untuk mempersiapkan
+      proses pemeriksaan permission dan risiko keamanan.
+    </p>
+
+    <section class="panel">
+      <h2>Unggah File APK</h2>
+      <form id="uploadForm">
+        <div class="upload-area">
+          <div class="upload-icon">📦</div>
+          <h3>Pilih File APK</h3>
+          <p>Format yang didukung: .apk</p>
+          <input
+            type="file"
+            id="apkFile"
+            accept=".apk,application/vnd.android.package-archive"
+            required
+          >
+          <div id="fileName">Belum ada file dipilih</div>
+          <br>
+          <button type="submit" id="submitButton">
+            Unggah APK
+          </button>
+        </div>
+      </form>
+
+      <div class="notice">
+        <strong>Informasi:</strong>
+        Pada tahap ini halaman baru menampilkan pemilihan file.
+        Proses analisis keamanan akan dihubungkan ke backend
+        dan MobSF pada tahap berikutnya. Jangan memasang APK
+        yang tidak dikenal di perangkat pribadi.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const apkFile = document.getElementById('apkFile');
+    const fileName = document.getElementById('fileName');
+    const form = document.getElementById('uploadForm');
+
+    apkFile.addEventListener('change', function() {
+      const file = this.files[0];
+
+      if (!file) {
+        fileName.textContent = 'Belum ada file dipilih';
+        return;
+      }
+
+      if (!file.name.toLowerCase().endsWith('.apk')) {
+        alert('Pilih file dengan format APK!');
+        this.value = '';
+        fileName.textContent = 'Belum ada file dipilih';
+        return;
+      }
+
+      fileName.textContent = 'File dipilih: ' + file.name;
+    });
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const file = apkFile.files[0];
+
+      if (!file) {
+        alert('Silakan pilih file APK terlebih dahulu.');
+        return;
+      }
+
+      alert('File siap diproses. Backend analisis akan dihubungkan pada tahap berikutnya.');
+    });
+  </script>
+</body>
+</html>
