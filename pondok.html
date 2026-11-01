@@ -8,36 +8,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#eaf6ff; --card:#fff; --blue:#398cf5; --dark:#205da8;
-  --line:#c8e3ff; --soft:#dceeff; --ink:#254b76;
-  --muted:#7693b2; --red:#c43b59; --shadow:#c6e0ff;
+  --bg:#eaf6ff;
+  --card:#fff;
+  --blue:#398cf5;
+  --dark:#205da8;
+  --line:#c8e3ff;
+  --soft:#dceeff;
+  --ink:#254b76;
+  --muted:#7693b2;
+  --red:#c43b59;
+  --shadow:#c6e0ff;
 }
 * { box-sizing:border-box; }
 body {
-  margin:0; min-height:100vh; font-family:Nunito,sans-serif;
+  margin:0;
+  min-height:100vh;
+  font-family:Nunito,sans-serif;
   color:var(--ink);
-  background:radial-gradient(circle at 8% 8%,#d5edff 0 80px,transparent 81px),
-  radial-gradient(circle at 92% 35%,#d5edff 0 100px,transparent 101px),var(--bg);
+  background:
+    radial-gradient(circle at 8% 8%,#d5edff 0 80px,transparent 81px),
+    radial-gradient(circle at 92% 35%,#d5edff 0 100px,transparent 101px),
+    var(--bg);
 }
 button,input { font:inherit; }
 button { cursor:pointer; }
 .wrap { max-width:1050px; margin:auto; padding:18px 16px 50px; }
-header { text-align:center; padding:15px 0 10px; }
+
+header {
+  text-align:center;
+  padding:15px 0 10px;
+  position:relative;
+}
 .mascot { font-size:58px; display:inline-block; animation:bob 2.4s infinite; }
 @keyframes bob { 50% { transform:translateY(-7px) rotate(4deg); } }
 h1 { margin:0; color:var(--dark); font-size:clamp(27px,5vw,40px); font-weight:900; }
 header p { color:var(--muted); font-weight:800; margin:6px 0; }
+
+.project-link {
+  position:absolute;
+  top:18px;
+  right:0;
+  color:var(--dark);
+  font-size:15px;
+  font-weight:900;
+  text-decoration:none;
+  padding:8px 13px;
+  border-radius:12px;
+  background:var(--soft);
+  transition:.15s;
+}
+.project-link:hover {
+  color:white;
+  background:var(--blue);
+}
+
 .toolbar { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:20px 0; }
 .btn {
   border:0; border-radius:15px; padding:11px 15px;
   background:var(--soft); color:var(--dark);
-  font-weight:900; box-shadow:0 4px 0 var(--shadow); transition:.12s;
+  font-weight:900; box-shadow:0 4px 0 var(--shadow);
+  transition:.12s;
 }
 .btn:active { transform:translateY(3px); box-shadow:0 1px 0 var(--shadow); }
 .btn.primary { background:var(--blue); color:white; box-shadow:0 4px 0 #2467c6; }
+
 .crumb {
   background:white; border:2px solid var(--line); border-radius:17px;
-  padding:13px 15px; margin:15px 0; font-weight:900; overflow-wrap:anywhere;
+  padding:13px 15px; margin:15px 0; font-weight:900;
+  overflow-wrap:anywhere;
 }
 .tools { display:flex; gap:10px; margin:14px 0; }
 .search {
@@ -45,7 +83,11 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
   border-radius:15px; background:white; color:var(--ink); outline:none;
 }
 .search:focus { border-color:var(--blue); }
-.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(205px,1fr)); gap:23px 16px; margin-top:25px; }
+
+.grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
+  gap:23px 16px; margin-top:25px;
+}
 .folder {
   position:relative; text-align:center; background:var(--card);
   border:3px solid var(--line); border-radius:12px 24px 24px 24px;
@@ -55,7 +97,8 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
 .folder:before {
   content:""; position:absolute; top:-15px; left:-3px;
   width:83px; height:17px; background:white;
-  border:3px solid var(--line); border-bottom:0; border-radius:12px 12px 0 0;
+  border:3px solid var(--line); border-bottom:0;
+  border-radius:12px 12px 0 0;
 }
 .folder:hover { transform:translateY(-4px); border-color:var(--blue); }
 .folder-open { cursor:pointer; }
@@ -67,15 +110,23 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
 .item-actions { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:12px; }
 .mini { border:0; border-radius:10px; padding:7px 9px; background:var(--soft); color:var(--dark); font-weight:900; }
 .mini.del { background:#ffe6ec; color:var(--red); }
+
 .filelist { display:grid; gap:10px; margin-top:15px; }
-.file { display:flex; align-items:center; gap:11px; flex-wrap:wrap; background:white; border:2px solid var(--line); border-radius:17px; padding:12px; }
+.file {
+  display:flex; align-items:center; gap:11px; flex-wrap:wrap;
+  background:white; border:2px solid var(--line); border-radius:17px; padding:12px;
+}
 .fileicon { font-size:29px; }
 .filemid { flex:1; min-width:100px; }
 .filename { display:block; color:var(--dark); font-weight:900; overflow-wrap:anywhere; text-decoration:none; }
 .filename:hover { text-decoration:underline; }
 .meta { display:block; color:var(--muted); font-size:12px; font-weight:800; margin-top:3px; }
 .fileactions { display:flex; gap:6px; flex-wrap:wrap; }
-.drop { border:3px dashed var(--blue); background:#f5fbff; border-radius:22px; padding:20px; text-align:center; margin:18px 0; font-weight:900; cursor:pointer; }
+
+.drop {
+  border:3px dashed var(--blue); background:#f5fbff; border-radius:22px;
+  padding:20px; text-align:center; margin:18px 0; font-weight:900; cursor:pointer;
+}
 .drop.over { background:#d5ebff; }
 .drop span { display:block; font-size:34px; }
 .status { text-align:center; font-weight:800; color:var(--muted); white-space:pre-wrap; overflow-wrap:anywhere; margin:14px 0; }
@@ -83,8 +134,11 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
 .empty { text-align:center; padding:30px 10px; color:var(--muted); font-weight:900; }
 .note { font-size:12px; color:var(--muted); text-align:center; margin-top:25px; }
 #picker { display:none; }
+
 @media(max-width:500px) {
   .wrap { padding:12px 12px 35px; }
+  header { padding-top:55px; }
+  .project-link { top:5px; right:0; }
   .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 12px; }
   .folder { padding:27px 8px 13px; }
   .pic { font-size:43px; }
@@ -95,6 +149,7 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
 <body>
 <div class="wrap">
   <header>
+    <a class="project-link" href="/cyber/login.html">Project</a>
     <span class="mascot">🐧</span>
     <h1>Pondok Tugas Naila ☁️</h1>
     <p>Tempat tugas-tugas kecil yang menggemaskan 🫧</p>
@@ -108,6 +163,7 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
   </div>
 
   <div class="crumb" id="crumb">🏠 Menghubungkan ke Drive...</div>
+
   <div class="tools">
     <input id="search" class="search" placeholder="🔎 Cari folder atau file...">
   </div>
@@ -122,6 +178,7 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
   <div class="status" id="status">Memuat Google Drive... 🫧</div>
   <div class="grid" id="folders"></div>
   <div class="filelist" id="files"></div>
+
   <p class="note">💙 Tugas disimpan langsung ke Google Drive.</p>
 </div>
 
@@ -170,8 +227,11 @@ async function apiCall(action, fields = {}) {
   });
 
   let result;
-  try { result = await response.json(); }
-  catch { throw new Error('Balasan server tidak valid. Periksa konfigurasi API Vercel.'); }
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error('Balasan server tidak valid. Periksa konfigurasi API Vercel.');
+  }
 
   if (!response.ok || !result || result.ok === false) {
     throw new Error((result && result.error) || ('Permintaan gagal (' + response.status + ').'));
@@ -181,7 +241,10 @@ async function apiCall(action, fields = {}) {
 }
 
 function invoke(fn, args, success) {
-  if (busy) { say('Tunggu proses sebelumnya selesai ya 🐧'); return; }
+  if (busy) {
+    say('Tunggu proses sebelumnya selesai ya 🐧');
+    return;
+  }
 
   const actions = {
     getContents: () => apiCall('getContents', { folderId: args[0] }),
@@ -190,16 +253,26 @@ function invoke(fn, args, success) {
     trashItem: () => apiCall('trashItem', { id: args[0], type: args[1] })
   };
 
-  if (!actions[fn]) { showError(new Error('Aksi tidak dikenal: ' + fn)); return; }
+  if (!actions[fn]) {
+    showError(new Error('Aksi tidak dikenal: ' + fn));
+    return;
+  }
 
   busy = true;
   actions[fn]()
-    .then(result => { busy = false; success(result); })
-    .catch(error => { busy = false; showError(error); });
+    .then(result => {
+      busy = false;
+      success(result);
+    })
+    .catch(error => {
+      busy = false;
+      showError(error);
+    });
 }
 
 function render() {
   if (!contents) return;
+
   $('crumb').textContent = '🏠 ' + stack.map(x => x.name).join('  ›  ');
 
   const q = $('search').value.trim().toLowerCase();
@@ -241,11 +314,15 @@ function render() {
 }
 
 function load(id, name, push=true) {
-  if (busy) { say('Tunggu proses sebelumnya selesai ya 🐧'); return; }
+  if (busy) {
+    say('Tunggu proses sebelumnya selesai ya 🐧');
+    return;
+  }
 
   if (push && id !== current) stack.push({id:id, name:name});
   current = id;
   contents = null;
+
   $('folders').innerHTML = '';
   $('files').innerHTML = '';
   $('crumb').textContent = '🫧 Membaca Google Drive...';
@@ -265,10 +342,15 @@ function reload() {
 
 function goBack() {
   if (stack.length <= 1) {
-    window.location.href = '/';
+    say('Kamu sudah berada di folder utama 🏠');
     return;
   }
-  if (busy) { say('Tunggu proses sebelumnya selesai ya 🐧'); return; }
+
+  if (busy) {
+    say('Tunggu proses sebelumnya selesai ya 🐧');
+    return;
+  }
+
   stack.pop();
   const parent = stack[stack.length-1];
   load(parent.id, parent.name, false);
@@ -277,7 +359,10 @@ function goBack() {
 function addFolder() {
   const name = prompt('Masukkan nama folder baru:');
   if (name === null) return;
-  if (!name.trim()) { say('Nama folder tidak boleh kosong.', true); return; }
+  if (!name.trim()) {
+    say('Nama folder tidak boleh kosong.', true);
+    return;
+  }
 
   invoke('createFolder', [current, name], () => {
     say('Folder berhasil dibuat! 📁');
@@ -297,6 +382,7 @@ function rename(id, type, oldName) {
 
 function removeItem(id, type, name) {
   const kind = type === 'folder' ? 'folder' : 'file';
+
   if (!confirm('Pindahkan ' + kind + ' "' + name + '" ke Sampah Google Drive?')) return;
 
   invoke('trashItem', [id, type], () => {
@@ -308,7 +394,10 @@ function removeItem(id, type, name) {
 async function uploadFiles(fileList) {
   const files = Array.from(fileList || []);
   if (!files.length) return;
-  if (busy) { say('Tunggu proses sebelumnya selesai ya 🐧'); return; }
+  if (busy) {
+    say('Tunggu proses sebelumnya selesai ya 🐧');
+    return;
+  }
 
   const target = current;
   let successes = 0;
@@ -318,12 +407,14 @@ async function uploadFiles(fileList) {
   try {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+
       if (file.size > 3 * 1024 * 1024) {
         failures.push(file.name + ' (maksimal 3 MB)');
         continue;
       }
 
       say('Membaca ' + file.name + ' (' + (i + 1) + '/' + files.length + ')...');
+
       try {
         const dataUrl = await new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -336,6 +427,7 @@ async function uploadFiles(fileList) {
         if (!base64) throw new Error('data file kosong');
 
         say('Mengunggah ' + file.name + ' (' + (i + 1) + '/' + files.length + ')...');
+
         await apiCall('uploadFile', {
           folderId: target,
           name: file.name,
@@ -367,11 +459,16 @@ $('picker').onchange = e => {
   e.target.value = '';
 };
 
-$('search').oninput = () => { if (contents) render(); };
+$('search').oninput = () => {
+  if (contents) render();
+};
 
 $('folders').addEventListener('click', e => {
   const open = e.target.closest('[data-open]');
-  if (open) { load(open.dataset.open, open.dataset.name); return; }
+  if (open) {
+    load(open.dataset.open, open.dataset.name);
+    return;
+  }
 
   const renameButton = e.target.closest('[data-rename]');
   if (renameButton) {
@@ -380,7 +477,9 @@ $('folders').addEventListener('click', e => {
   }
 
   const deleteButton = e.target.closest('[data-delete]');
-  if (deleteButton) removeItem(deleteButton.dataset.delete, deleteButton.dataset.type, deleteButton.dataset.name);
+  if (deleteButton) {
+    removeItem(deleteButton.dataset.delete, deleteButton.dataset.type, deleteButton.dataset.name);
+  }
 });
 
 $('files').addEventListener('click', e => {
@@ -391,19 +490,29 @@ $('files').addEventListener('click', e => {
   }
 
   const deleteButton = e.target.closest('[data-delete]');
-  if (deleteButton) removeItem(deleteButton.dataset.delete, deleteButton.dataset.type, deleteButton.dataset.name);
+  if (deleteButton) {
+    removeItem(deleteButton.dataset.delete, deleteButton.dataset.type, deleteButton.dataset.name);
+  }
 });
 
 const drop = $('drop');
+
 drop.onclick = () => $('picker').click();
-drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+
+drop.ondragover = e => {
+  e.preventDefault();
+  drop.classList.add('over');
+};
+
 drop.ondragleave = () => drop.classList.remove('over');
+
 drop.ondrop = e => {
   e.preventDefault();
   drop.classList.remove('over');
   uploadFiles(e.dataTransfer.files);
 };
 
+// Mulai dari folder utama yang sudah ditentukan.
 load(ROOT, 'Pondok Tugas Naila', false);
 </script>
 </body>
