@@ -40,10 +40,16 @@ h1 { margin:0; color:var(--dark); font-size:clamp(27px,5vw,40px); font-weight:90
 header p { color:var(--muted); font-weight:800; margin:6px 0; }
 .toolbar { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:20px 0; }
 .btn {
-  border:0; border-radius:15px; padding:11px 15px;
-  background:var(--soft); color:var(--dark);
-  font-weight:900; box-shadow:0 4px 0 var(--shadow);
+  display:inline-block;
+  border:0;
+  border-radius:15px;
+  padding:11px 15px;
+  background:var(--soft);
+  color:var(--dark);
+  font-weight:900;
+  box-shadow:0 4px 0 var(--shadow);
   transition:.12s;
+  text-decoration:none;
 }
 .btn:active { transform:translateY(3px); box-shadow:0 1px 0 var(--shadow); }
 .btn.primary { background:var(--blue); color:white; box-shadow:0 4px 0 #2467c6; }
@@ -125,6 +131,10 @@ header p { color:var(--muted); font-weight:800; margin:6px 0; }
 
   <div class="toolbar">
     <button class="btn" id="backBtn">⬅️ Kembali</button>
+
+    <!-- Tombol menuju aplikasi To-Do List -->
+    <a class="btn" href="/lpk-3a/">📝 To-Do List</a>
+
     <button class="btn primary" id="addFolder">➕ Folder baru</button>
     <button class="btn primary" id="uploadTop">⬆️ Upload tugas</button>
     <button class="btn" id="refresh">🔄 Muat ulang</button>
@@ -412,7 +422,7 @@ async function uploadFiles(fileList) {
   }
 
   say('Selesai! Berhasil: ' + successes + ', gagal/dilewati: ' + failures.length +
-      (failures.length ? '\\n' + failures.join('\\n') : ''), failures.length > 0);
+      (failures.length ? '\n' + failures.join('\n') : ''), failures.length > 0);
 
   if (current === target) reload();
 }
