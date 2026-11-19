@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐧 To-Do Pondok Tugas Naila</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="penguin">🐧</div>
+      <h1>To-Do Pondok Tugas ☁️</h1>
+      <p class="subtitle">Catat tugas-tugas kecil yang menggemaskan 🫧</p>
+    </header>
+
+    <form id="form-todo">
+      <input type="text" id="input-todo" placeholder="Tulis tugas baru..." required>
+      <button type="submit">➕ Tambah</button>
+    </form>
+
+    <p id="stats">0 tugas belum selesai</p>
+
+    <ul id="list-todo"></ul>
+
+    <p class="footer-note">💙 Data tersimpan otomatis di browser (localStorage).</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
